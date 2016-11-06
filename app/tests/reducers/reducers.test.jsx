@@ -4,7 +4,6 @@ var df = require('deep-freeze-strict');
 var reducers = require('reducers');
 
 describe('Reducers', () => {
-
   describe('searchTextReducer', () => {
     it('should set searchText', () => {
       var action = {
@@ -17,7 +16,7 @@ describe('Reducers', () => {
     });
   });
 
-  describe('showCompletedReducer', () =>{
+  describe('showCompletedReducer', () => {
     it('should toggle showCompleted', () => {
       var action = {
         type: 'TOGGLE_SHOW_COMPLETED'
@@ -26,13 +25,13 @@ describe('Reducers', () => {
 
       expect(res).toEqual(true);
     });
-  })
+  });
 
-  describe('todosReducer', () =>{
+  describe('todosReducer', () => {
     it('should add new todo', () => {
       var action = {
         type: 'ADD_TODO',
-        text: 'Fuck teen'
+        text: 'Walk the dog'
       };
       var res = reducers.todosReducer(df([]), df(action));
 
@@ -43,12 +42,11 @@ describe('Reducers', () => {
     it('should toggle todo', () => {
       var todos = [{
         id: '123',
-        text: 'Do something',
+        text: 'Something',
         completed: true,
         createdAt: 123,
         completedAt: 125
       }];
-
       var action = {
         type: 'TOGGLE_TODO',
         id: '123'
@@ -58,5 +56,5 @@ describe('Reducers', () => {
       expect(res[0].completed).toEqual(false);
       expect(res[0].completedAt).toEqual(undefined);
     });
-  })
+  });
 });
